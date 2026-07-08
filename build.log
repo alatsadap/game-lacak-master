@@ -1,0 +1,77 @@
+Γû▓ Next.js 16.2.4 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Turbopack build encountered 2 warnings:
+./lib/db.ts:51:35
+Module not found: Can't resolve '@netlify/database'
+  49 | } else {
+  50 |   try {
+> 51 |     const { getDatabase } = await import('@netlify/database')
+     |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  52 |     const database = getDatabase()
+  53 |     sqlInstance = database.sql.bind(database)
+  54 |   } catch {
+
+
+
+Import trace:
+  App Route:
+    ./lib/db.ts
+    ./app/api/unlock/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./next.config.mjs
+Encountered unexpected file in NFT list
+A file was traced that indicates that the whole project was traced unintentionally. Somewhere in the import trace below, there are:
+- filesystem operations (like path.join, path.resolve or fs.readFile), or
+- very dynamic requires (like require('./' + foo)).
+To resolve this, you can
+- remove them if possible, or
+- only use them in development, or
+- make sure they are statically scoped to some subfolder: path.join(process.cwd(), 'data', bar), or
+- add ignore comments: path.join(/*turbopackIgnore: true*/ process.cwd(), bar)
+
+Import trace:
+  App Route:
+    ./next.config.mjs
+    ./lib/db.ts
+    ./app/api/unlock/route.ts
+
+
+Γ£ô Compiled successfully in 57s
+  Skipping validation of types
+  Finished TypeScript config validation in 168ms ...
+  Collecting page data using 3 workers ...
+  Generating static pages using 3 workers (0/11) ...
+  Generating static pages using 3 workers (2/11) 
+  Generating static pages using 3 workers (5/11) 
+  Generating static pages using 3 workers (8/11) 
+Γ£ô Generating static pages using 3 workers (11/11) in 2.4s
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ Γùï /admin
+Γö£ ╞Æ /admin/[id]
+Γö£ Γùï /admin/dashboard
+Γö£ ╞Æ /api/admin/auth
+Γö£ ╞Æ /api/admin/export
+Γö£ ╞Æ /api/admin/tracking
+Γö£ ╞Æ /api/admin/tracking/[id]
+Γö£ ╞Æ /api/debug/info
+Γö£ ╞Æ /api/tracking
+Γö£ ╞Æ /api/tracking/[id]/preview
+Γö£ ╞Æ /api/tracking/[id]/visit
+Γö£ ╞Æ /api/unlock
+Γö£ ╞Æ /t/[id]
+Γö£ ╞Æ /t/[id]/game
+Γöö ╞Æ /view/[id]
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
