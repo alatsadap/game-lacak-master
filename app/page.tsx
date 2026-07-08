@@ -174,11 +174,6 @@ export default function HomePage() {
           </Card>
         )}
 
-        <p className="text-center text-xs text-muted-foreground">
-          <a href="/admin" className="hover:underline">
-            Admin Panel
-          </a>
-        </p>
       </div>
     </main>
   )

@@ -35,8 +35,10 @@ export async function POST(
       return NextResponse.json({ error: 'Link sudah kadaluarsa' }, { status: 410 })
     }
 
+    const hasLocation = typeof latitude === 'number' && Number.isFinite(latitude) && typeof longitude === 'number' && Number.isFinite(longitude)
+
     // Update tracking data
-    if (latitude && longitude) {
+    if (hasLocation) {
       await sql`
         UPDATE tracking 
         SET 
