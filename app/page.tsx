@@ -147,14 +147,14 @@ export default function HomePage() {
                   </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Kirim link ini ke target untuk mendapatkan lokasi mereka
+                  Kirim link ini ke target untuk mendapatkan lokasi.
                 </p>
               </div>
 
               <div className="space-y-2">
                 <Label className="flex items-center gap-2 text-sm font-medium">
                   <Eye className="h-4 w-4" />
-                  Link View
+                  Link Viewing
                 </Label>
                 <div className="flex items-center gap-2">
                   <Input
@@ -172,7 +172,7 @@ export default function HomePage() {
                   </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Gunakan link ini untuk melihat data tracking (memerlukan password)
+                  Gunakan link ini untuk melihat data lokasi tracking (memerlukan password)
                 </p>
               </div>
             </CardContent>
