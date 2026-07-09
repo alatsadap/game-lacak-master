@@ -9,7 +9,6 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
     default: 'Tracking Dashboard',
-    template: '%s | Tracking Dashboard',
   },
   description: 'Aplikasi Tracking Lokasi dengan Dashboard Admin',
   generator: 'v0.app',
