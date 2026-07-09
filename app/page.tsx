@@ -159,7 +159,7 @@ export default function HomePage() {
                 <Input
                   id="nomor_target"
                   type="text"
-                  placeholder="Contoh: 08123456789 atau 62812345678 atau +62812345678"
+                  placeholder="Input nomor..."
                   value={nomorTarget}
                   onChange={(e) => handleNomorTargetChange(e.target.value)}
                   disabled={loading}
