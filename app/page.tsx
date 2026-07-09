@@ -233,7 +233,7 @@ export default function HomePage() {
                   </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Gunakan link ini untuk melihat data lokasi tracking (memerlukan password)
+                  Gunakan link ini untuk melihat hasil data lokasi tracking (memerlukan password)
                 </p>
               </div>
             </CardContent>
