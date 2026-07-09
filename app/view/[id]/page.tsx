@@ -245,6 +245,10 @@ function PreviewSection({ preview }: { preview: PreviewData | null }) {
 }
 
 export default function ViewPage({ params }: { params: Promise<{ id: string }> }) {
+  useEffect(() => {
+    document.title = 'Data Tracking'
+  }, [])
+
   const { id } = use(params)
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -9,6 +9,10 @@ import { Label } from '@/components/ui/label'
 import { Shield, Lock } from 'lucide-react'
 
 export default function AdminLoginPage() {
+  useEffect(() => {
+    document.title = 'Login Admin'
+  }, [])
+
   const router = useRouter()
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)

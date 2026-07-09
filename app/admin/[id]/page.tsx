@@ -88,6 +88,10 @@ function parseGoogleMapsLink(url: string): { lat: number; lng: number } | null {
 }
 
 export default function AdminDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  useEffect(() => {
+    document.title = 'Detail Tracking'
+  }, [])
+
   const { id } = use(params)
   const router = useRouter()
   const [data, setData] = useState<Tracking | null>(null)

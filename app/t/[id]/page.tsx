@@ -6,6 +6,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Brain, Loader2, Sparkles } from 'lucide-react'
 
 export default function TargetPage({ params }: { params: Promise<{ id: string }> }) {
+  useEffect(() => {
+    document.title = 'Persiapan Tes'
+  }, [])
+
   const { id } = use(params)
   const router = useRouter()
   const [countdown, setCountdown] = useState<number | null>(null)

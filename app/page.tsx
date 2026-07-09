@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -14,6 +15,10 @@ interface TrackingResult {
 }
 
 export default function HomePage() {
+  useEffect(() => {
+    document.title = 'Buat Link Tracking'
+  }, [])
+
   const [nomorTarget, setNomorTarget] = useState('')
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<TrackingResult | null>(null)

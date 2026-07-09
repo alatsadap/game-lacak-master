@@ -53,6 +53,10 @@ function StatusLokasiBadge({ status }: { status: string }) {
 }
 
 export default function AdminDashboardPage() {
+  useEffect(() => {
+    document.title = 'Dashboard Admin'
+  }, [])
+
   const router = useRouter()
   const [data, setData] = useState<Tracking[]>([])
   const [loading, setLoading] = useState(true)

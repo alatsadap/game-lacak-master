@@ -8,6 +8,10 @@ import { Brain, CheckCircle, XCircle, Trophy, RotateCcw } from 'lucide-react'
 import { shuffleQuestions, type Question } from '@/lib/questions'
 
 export default function GamePage({ params }: { params: Promise<{ id: string }> }) {
+  useEffect(() => {
+    document.title = 'Tes IQ'
+  }, [])
+
   const { id } = use(params)
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
