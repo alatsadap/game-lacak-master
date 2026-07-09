@@ -6,6 +6,7 @@ export async function generateMetadata(
   const { id } = await params
   return {
     title: 'Tes IQ',
+    description: 'Jawab pertanyaan tes kecerdasan IQ',
   }
 }
 
