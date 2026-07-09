@@ -8,7 +8,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Tracking Dashboard',
+    default: 'Sharelink IQ Test',
   },
   description: 'Aplikasi Tracking Lokasi dengan Dashboard Admin',
   generator: 'v0.app',
