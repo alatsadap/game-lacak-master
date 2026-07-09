@@ -16,7 +16,7 @@ interface TrackingResult {
 
 export default function HomePage() {
   useEffect(() => {
-    document.title = 'Buat Link Tracking'
+    document.title = 'Buat Link'
   }, [])
 
   const [nomorTarget, setNomorTarget] = useState('')
@@ -77,10 +77,10 @@ export default function HomePage() {
         <div className="text-center space-y-2">
           <div className="flex items-center justify-center gap-2">
             <MapPin className="h-8 w-8 text-primary" />
-            <h1 className="text-3xl font-bold">Tracking Dashboard</h1>
+            <h1 className="text-3xl font-bold">Sharelink </h1>
           </div>
           <p className="text-muted-foreground">
-            Buat link tracking untuk mendapatkan informasi lokasi
+            Buat link untuk mendapatkan informasi GPS
           </p>
         </div>
 
@@ -88,16 +88,16 @@ export default function HomePage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5" />
-              Buat Link Tracking
+              Buat Link
             </CardTitle>
             <CardDescription>
-              Masukkan nomor target untuk membuat link tracking baru
+              Masukkan nomor target untuk membuat link baru
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="nomor_target">Nomor Target</Label>
+                <Label htmlFor="nomor_target">Input Nomor</Label>
                 <Input
                   id="nomor_target"
                   type="text"
