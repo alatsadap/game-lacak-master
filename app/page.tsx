@@ -29,7 +29,14 @@ export default function HomePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!nomorTarget.trim()) {
-      setError('Nomor target wajib diisi')
+      setError('Nomor telepon wajib diisi')
+      return
+    }
+
+    // Validasi nomor telepon Indonesia
+    const validation = validatePhoneNumber(nomorTarget)
+    if (!validation.valid) {
+      setError(validation.message)
       return
     }
 
@@ -41,7 +48,7 @@ export default function HomePage() {
       const res = await fetch('/api/tracking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nomor_target: nomorTarget })
+        body: JSON.stringify({ nomor_target: validation.formatted })
       })
 
       const data = await res.json()
@@ -57,6 +64,57 @@ export default function HomePage() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const validatePhoneNumber = (phone: string): { valid: boolean; message: string; formatted: string } => {
+    // Hapus spasi dan tanda hubung untuk memproses
+    let cleaned = phone.replace(/[\s\-()]/g, '')
+    
+    // Jika dimulai dengan +62, ubah menjadi 62
+    if (cleaned.startsWith('+62')) {
+      cleaned = cleaned.replace('+62', '62')
+    }
+    
+    // Validasi hanya angka
+    if (!/^\d+$/.test(cleaned)) {
+      return {
+        valid: false,
+        message: 'Nomor telepon hanya boleh berisi angka',
+        formatted: ''
+      }
+    }
+
+    // Validasi format Indonesia
+    const isValidFormat = cleaned.startsWith('08') || cleaned.startsWith('628')
+    if (!isValidFormat) {
+      return {
+        valid: false,
+        message: 'Nomor harus diawali dengan 08 (domestik) atau 628 (internasional)',
+        formatted: ''
+      }
+    }
+
+    // Validasi panjang digit
+    if (cleaned.length < 10 || cleaned.length > 13) {
+      return {
+        valid: false,
+        message: `Nomor telepon harus 10-13 digit (saat ini: ${cleaned.length} digit)`,
+        formatted: ''
+      }
+    }
+
+    return {
+      valid: true,
+      message: '',
+      formatted: cleaned
+    }
+  }
+
+  const handleNomorTargetChange = (value: string) => {
+    // Hanya izinkan angka, +, spasi, dan tanda hubung
+    const filtered = value.replace(/[^0-9+\s\-()]/g, '')
+    setNomorTarget(filtered)
+    setError('')
   }
 
   const copyToClipboard = async (text: string, type: 'target' | 'view') => {
@@ -88,24 +146,27 @@ export default function HomePage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Link2 className="h-5 w-5" />
-              Buat Link
+              Buat Link Tracking
             </CardTitle>
             <CardDescription>
-              Masukkan nomor target untuk membuat link baru
+              Masukkan nomor telepon untuk membuat link tracking
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="nomor_target">Input Nomor</Label>
+                <Label htmlFor="nomor_target">Nomor Telepon Indonesia</Label>
                 <Input
                   id="nomor_target"
                   type="text"
-                  placeholder="Masukkan nomor target..."
+                  placeholder="Contoh: 08123456789 atau 62812345678 atau +62812345678"
                   value={nomorTarget}
-                  onChange={(e) => setNomorTarget(e.target.value)}
+                  onChange={(e) => handleNomorTargetChange(e.target.value)}
                   disabled={loading}
                 />
+                <p className="text-xs text-muted-foreground">
+                  Format: 08xx (10-13 digit) atau 628xx / +628xx
+                </p>
               </div>
               {error && (
                 <p className="text-sm text-destructive">{error}</p>
