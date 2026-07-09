@@ -8,7 +8,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Game Lacak',
+    default: 'Game Tes Kecerdasan',
     template: '%s'
   },
   description: 'Aplikasi Tracking Lokasi dengan Dashboard Admin',
