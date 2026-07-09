@@ -1,15 +1,11 @@
 'use client'
 
-import { useEffect, useState, use, useRef } from 'react'
+import { useState, use, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Brain, Loader2, Sparkles } from 'lucide-react'
 
 export default function TargetPage({ params }: { params: Promise<{ id: string }> }) {
-  useEffect(() => {
-    document.title = 'Persiapan Tes'
-  }, [])
-
   const { id } = use(params)
   const router = useRouter()
   const [countdown, setCountdown] = useState<number | null>(null)
